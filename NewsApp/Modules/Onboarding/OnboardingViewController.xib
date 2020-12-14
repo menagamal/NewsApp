@@ -38,12 +38,9 @@
                             <state key="normal" title="Next">
                                 <color key="titleColor" red="0.89019607840000003" green="0.91372549020000005" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
-                            <connections>
-                                <action selector="nextAction:" destination="-1" eventType="touchUpInside" id="VN8-e1-6Nj"/>
-                            </connections>
                         </button>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="pG9-UF-CIy">
-                            <rect key="frame" x="16" y="141" width="225" height="444"/>
+                            <rect key="frame" x="16" y="141" width="343" height="444"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZUo-aH-MMi">
                                 <size key="itemSize" width="50" height="50"/>
@@ -62,8 +59,7 @@
                         <constraint firstItem="dIg-mD-KAv" firstAttribute="leading" secondItem="mw9-7J-nht" secondAttribute="leading" id="SGa-ne-b33"/>
                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="L2g-hC-Rs8" secondAttribute="trailing" constant="4" id="cTZ-Gn-Tzb"/>
                         <constraint firstItem="L2g-hC-Rs8" firstAttribute="width" secondItem="mw9-7J-nht" secondAttribute="width" multiplier="0.4" id="jEd-Z2-O1d"/>
-                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pG9-UF-CIy" secondAttribute="trailing" constant="4" id="pAH-Ey-lEL"/>
-                        <constraint firstItem="pG9-UF-CIy" firstAttribute="width" secondItem="mw9-7J-nht" secondAttribute="width" multiplier="0.6" id="pBa-OU-Fkw"/>
+                        <constraint firstAttribute="trailing" secondItem="pG9-UF-CIy" secondAttribute="trailing" constant="16" id="pAH-Ey-lEL"/>
                         <constraint firstItem="L2g-hC-Rs8" firstAttribute="top" secondItem="mw9-7J-nht" secondAttribute="top" constant="56" id="pWO-kL-2RY"/>
                         <constraint firstAttribute="trailing" secondItem="dIg-mD-KAv" secondAttribute="trailing" id="rPp-bP-OoR"/>
                         <constraint firstItem="pG9-UF-CIy" firstAttribute="top" secondItem="L2g-hC-Rs8" secondAttribute="bottom" constant="32" id="u71-kg-AYm"/>

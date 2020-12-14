@@ -9,12 +9,20 @@
 import UIKit
 
 class ArticlesViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
     }
-
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let vc: OnboardingViewController = UIViewController.instanceXib()
+        OnboardingConfig().createModule(view: vc, state: .Country)
+        //self.present(vc, animated: true, completion: nil)
+        self.show(vc, sender: self)
+    }
+    
+    
 }
 

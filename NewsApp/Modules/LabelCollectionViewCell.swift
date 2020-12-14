@@ -14,7 +14,8 @@ class LabelCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var labelTitle: UILabel!
     
     func setDetails(title:String,state:LabelCollectionViewCellStates) {
-        
+        self.labelTitle.text = title
+        contanierView.cornerRadius = contanierView.frame.height / 3.5
     }
 
 }

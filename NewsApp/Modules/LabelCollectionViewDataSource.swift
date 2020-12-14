@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import Foundation
 import UIKit
+import collection_view_layouts
 class LabelCollectionViewDataSource:NSObject, UICollectionViewDataSource, UICollectionViewDelegate  {
       
     var models: [CountryModel] = [CountryModel]()
@@ -35,6 +35,13 @@ class LabelCollectionViewDataSource:NSObject, UICollectionViewDataSource, UIColl
         
         self.delegate = delegate
         
+        let layout: BaseLayout = TagsLayout()
+
+        layout.delegate = self
+        layout.cellsPadding = ItemsPadding(horizontal: 10, vertical: 10)
+        layout.cellsPadding = ItemsPadding(horizontal: 8, vertical: 8)
+
+        self.collection.collectionViewLayout = layout
         self.collection.reloadData()
     }
     
@@ -44,7 +51,7 @@ class LabelCollectionViewDataSource:NSObject, UICollectionViewDataSource, UIColl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LabelCollectionViewCell",for: indexPath) as! LabelCollectionViewCell
-        cell.setDetails(title: models[indexPath.row].id, state: .Selected)
+        cell.setDetails(title: models[indexPath.row].title, state: .Selected)
         return cell
     }
     
@@ -55,7 +62,17 @@ class LabelCollectionViewDataSource:NSObject, UICollectionViewDataSource, UIColl
     }
     
 }
-
+extension LabelCollectionViewDataSource:LayoutDelegate{
+    func cellSize(indexPath: IndexPath) -> CGSize {
+        let width = Double(self.collection.bounds.width)
+        var size = UIFont.systemFont(ofSize: 17).sizeOfString(string: self.models[indexPath.row].title, constrainedToWidth: width)
+        size.width += 50
+        size.height += 50
+        return size
+    }
+    
+    
+}
 
 
 protocol LabelCollectionViewDataSourceActions {

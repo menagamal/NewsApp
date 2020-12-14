@@ -23,6 +23,7 @@ class OnboardingViewController: BaseViewController, OnboardingViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.loadDetails()
+        
     }
     
     @IBAction func nextAction(_ sender: UIButton) {
