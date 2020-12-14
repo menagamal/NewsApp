@@ -99,6 +99,7 @@
 		D04684BE25878AB00010C936 /* AppTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04684BC25878AB00010C936 /* AppTarget.swift */; };
 		D04684C3258795900010C936 /* LabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04684C1258795900010C936 /* LabelCollectionViewCell.swift */; };
 		D04684C4258795900010C936 /* LabelCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D04684C2258795900010C936 /* LabelCollectionViewCell.xib */; };
+		D04684C72587A3900010C936 /* LabelCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04684C62587A3900010C936 /* LabelCollectionViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -224,6 +225,7 @@
 		D04684BC25878AB00010C936 /* AppTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTarget.swift; sourceTree = "<group>"; };
 		D04684C1258795900010C936 /* LabelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCollectionViewCell.swift; sourceTree = "<group>"; };
 		D04684C2258795900010C936 /* LabelCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelCollectionViewCell.xib; sourceTree = "<group>"; };
+		D04684C62587A3900010C936 /* LabelCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCollectionViewDataSource.swift; sourceTree = "<group>"; };
 		D6622E0761B212FF0474C210 /* Pods-NewsAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsAppTests.debug.xcconfig"; path = "Target Support Files/Pods-NewsAppTests/Pods-NewsAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DBCA861ACF1DAD95DA171544 /* Pods-NewsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsApp.debug.xcconfig"; path = "Target Support Files/Pods-NewsApp/Pods-NewsApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -612,6 +614,7 @@
 			children = (
 				D04684C1258795900010C936 /* LabelCollectionViewCell.swift */,
 				D04684C2258795900010C936 /* LabelCollectionViewCell.xib */,
+				D04684C62587A3900010C936 /* LabelCollectionViewDataSource.swift */,
 			);
 			name = CollectionCells;
 			sourceTree = "<group>";
@@ -891,6 +894,7 @@
 				D046847825878A420010C936 /* PopupDialogDefaultViewController.swift in Sources */,
 				D046848825878A420010C936 /* CaptureQuality.swift in Sources */,
 				D04684AA25878A420010C936 /* BaseConfig.swift in Sources */,
+				D04684C72587A3900010C936 /* LabelCollectionViewDataSource.swift in Sources */,
 				D04684A325878A420010C936 /* UIButton+Additions.swift in Sources */,
 				D046848325878A420010C936 /* Data+Exxtension.swift in Sources */,
 				D046847B25878A420010C936 /* PresentationManager.swift in Sources */,

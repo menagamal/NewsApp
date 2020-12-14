@@ -10,9 +10,15 @@ import UIKit
 
 class LabelCollectionViewCell: UICollectionViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    @IBOutlet weak var contanierView: UIView!
+    @IBOutlet weak var labelTitle: UILabel!
+    
+    func setDetails(title:String,state:LabelCollectionViewCellStates) {
+        
     }
 
+}
+
+enum LabelCollectionViewCellStates {
+    case  Selected , Unselected
 }

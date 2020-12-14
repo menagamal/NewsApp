@@ -14,12 +14,15 @@ import UIKit
 //MARK: View -
 protocol OnboardingViewProtocol: class {
     var presenter: OnboardingPresenterProtocol?  { get set }
+    var topicsCollections: UICollectionView! { get set }
+    func loadCountriesLayout()
+    func loadCategoriesLayout()
 }
 //MARK: Presenter -
 protocol OnboardingPresenterProtocol: class {
     var view: OnboardingViewProtocol?  { get set }
-    func loadAllCountries()
-    func loadAllCategories()
+    func loadDetails()
+    func goToNextPage()  
 }
 
 //MARK: Interactor -
@@ -27,8 +30,8 @@ protocol OnboardingInteractorOutputProtocol: class {
     
 }
 protocol OnboardingInteractorInputProtocol: class {
-
-  var presenter: OnboardingInteractorOutputProtocol?  { get set }
+    
+    var presenter: OnboardingInteractorOutputProtocol?  { get set }
     func loadAllCountries()
     func loadAllCategories()
 }

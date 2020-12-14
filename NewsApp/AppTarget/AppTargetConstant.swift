@@ -10,6 +10,66 @@
 import Foundation
 
 enum AppTargetConstant {
+    enum Keys {
+        static let apiKey = "d61459448d394cc495267faf0785baf3"
+    }
+    
+
+    static let Countries: [CountryModel] = [
+        CountryModel(title: "United Arab Emirates", id: "ae") ,
+        CountryModel(title: "Argentina", id: "ar") ,
+        CountryModel(title: "Austria", id: "at") ,
+        CountryModel(title: "Belgium", id: "be") ,
+        CountryModel(title: "Bulgaria", id: "bg") ,
+        CountryModel(title: "Brazil", id: "br") ,
+        CountryModel(title: "Canada", id: "ca") ,
+        CountryModel(title: "Chile", id: "ch") ,
+        CountryModel(title: "China", id: "cn") ,
+        CountryModel(title: "Colombia", id: "co") ,
+        CountryModel(title: "Cuba", id: "cu") ,
+        CountryModel(title: "", id: "cz") ,
+        CountryModel(title: "", id: "de") ,
+        CountryModel(title: "", id: "eg") ,
+        CountryModel(title: "", id: "fr") ,
+        CountryModel(title: "", id: "gb") ,
+        CountryModel(title: "", id: "gr") ,
+        CountryModel(title: "", id: "hk") ,
+        CountryModel(title: "", id: "hu") ,
+        CountryModel(title: "", id: "id") ,
+        CountryModel(title: "", id: "ie") ,
+        CountryModel(title: "", id: "il") ,
+        CountryModel(title: "", id: "in") ,
+        CountryModel(title: "", id: "it") ,
+        CountryModel(title: "", id: "jp") ,
+        CountryModel(title: "", id: "kr") ,
+        CountryModel(title: "", id: "lt") ,
+        CountryModel(title: "", id: "lv") ,
+        CountryModel(title: "", id: "ma") ,
+        CountryModel(title: "", id: "mx") ,
+        CountryModel(title: "", id: "my") ,
+        CountryModel(title: "", id: "ng") ,
+        CountryModel(title: "", id: "nl") ,
+        CountryModel(title: "", id: "no") ,
+        CountryModel(title: "", id: "nz") ,
+        CountryModel(title: "", id: "ph") ,
+        CountryModel(title: "", id: "pl") ,
+        CountryModel(title: "", id: "pt") ,
+        CountryModel(title: "", id: "ro") ,
+        CountryModel(title: "", id: "rs") ,
+        CountryModel(title: "", id: "ru") ,
+        CountryModel(title: "", id: "sa") ,
+        CountryModel(title: "", id: "se") ,
+        CountryModel(title: "", id: "sg") ,
+        CountryModel(title: "", id: "si") ,
+        CountryModel(title: "", id: "sk") ,
+        CountryModel(title: "", id: "th") ,
+        CountryModel(title: "", id: "tr") ,
+        CountryModel(title: "", id: "tw") ,
+        CountryModel(title: "", id: "ua") ,
+        CountryModel(title: "", id: "us") ,
+        CountryModel(title: "", id: "ve") ,
+        CountryModel(title: "", id: "za")
+    ]
     
     enum EndPoint {
         
@@ -43,4 +103,8 @@ enum AppTargetConstant {
     }
     
     
+}
+struct CountryModel {
+    var title = ""
+    var id = ""
 }

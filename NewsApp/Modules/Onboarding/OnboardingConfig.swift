@@ -11,12 +11,12 @@
 import UIKit
 
 class OnboardingConfig: BaseConfig{
-    func createModule(view: OnboardingViewController) {
+    func createModule(view: OnboardingViewController,state: OnboardingState) {
         
         let interactor: OnboardingInteractor = OnboardingInteractor()
         let router: OnboardingRouter = OnboardingRouter()
         
-        let presenter: OnboardingPresenter = OnboardingPresenter(view: view, interactor: interactor, router: router)
+        let presenter: OnboardingPresenter = OnboardingPresenter(view: view, interactor: interactor, router: router, state: state)
         
         router.view = view
         interactor.basePresenter = handleBasePresenter(baseView: view)

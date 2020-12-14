@@ -10,8 +10,8 @@ target 'NewsApp' do
   pod 'IQKeyboardManagerSwift'
   pod 'SDWebImage', '~> 4.0'
   pod 'DataCache'
-
-
+  pod 'collection-view-layouts/TagsLayout'
+  
   target 'NewsAppTests' do
     inherit! :search_paths
     # Pods for testing

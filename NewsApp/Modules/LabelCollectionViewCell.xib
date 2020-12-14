@@ -44,6 +44,10 @@
                 <constraint firstAttribute="trailing" secondItem="VG3-W7-EnV" secondAttribute="trailing" constant="12" id="m9i-U9-hah"/>
             </constraints>
             <size key="customSize" width="259" height="88"/>
+            <connections>
+                <outlet property="contanierView" destination="VG3-W7-EnV" id="K5G-Pw-YCg"/>
+                <outlet property="labelTitle" destination="jfN-mx-dRh" id="m1L-Fp-k8W"/>
+            </connections>
             <point key="canvasLocation" x="-89.130434782608702" y="79.6875"/>
         </collectionViewCell>
     </objects>

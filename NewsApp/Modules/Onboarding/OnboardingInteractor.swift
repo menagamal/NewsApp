@@ -11,6 +11,16 @@
 import UIKit
 
 class OnboardingInteractor: BaseInteractor<AppTarget>,OnboardingInteractorInputProtocol {
-
+    
     weak var presenter: OnboardingInteractorOutputProtocol?
+    
+    func loadAllCountries() {
+        
+    }
+    
+    func loadAllCategories() {
+        
+    }
+    
+    
 }

@@ -72,8 +72,6 @@ extension BaseViewController: BaseViewProtocol {
     }
     
     func unAuthorized() {
-        #warning("Implement UNAUTH")
-//        rootToLogin()
     }
     
     @IBAction func goToBack(_ sender: Any) {

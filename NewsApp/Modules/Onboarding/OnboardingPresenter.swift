@@ -11,27 +11,62 @@
 import UIKit
 
 class OnboardingPresenter: BasePresenter,OnboardingPresenterProtocol {
-   
-
+    
+    
     weak internal var view: OnboardingViewProtocol?
+    
     var interactor: OnboardingInteractorInputProtocol?
+    
     private let router: OnboardingRouterProtocol
-
-    init(view: OnboardingViewProtocol, interactor: OnboardingInteractorInputProtocol?, router: OnboardingRouterProtocol) {
+    
+    private var state: OnboardingState = .Country
+    
+    private var dataSource: LabelCollectionViewDataSource?
+    
+    init(view: OnboardingViewProtocol, interactor: OnboardingInteractorInputProtocol?, router: OnboardingRouterProtocol,state: OnboardingState) {
         self.view = view
         self.interactor = interactor
         self.router = router
+        self.state = state
     }
-    func loadAllCountries() {
-           
-       }
-       
-       func loadAllCategories() {
-           
-       }
-       
+    func loadDetails() {
+        guard let view = view else {
+            return
+        }
+        switch self.state {
+        case .Categories:
+            dataSource = LabelCollectionViewDataSource(collection: view.topicsCollections, models: AppTargetConstant.Countries, delegate: self)
+            view.loadCountriesLayout()
+            break
+        case .Country:
+            dataSource = LabelCollectionViewDataSource(collection: view.topicsCollections, models: AppTargetConstant.Countries, delegate: self)
+            view.loadCountriesLayout()
+            break
+        }
+    }
+    func goToNextPage() {
+        switch self.state {
+        case .Categories:
+            
+            break
+        case .Country:
+            
+            break
+        }
+    }
+    
+}
+
+extension  OnboardingPresenter:LabelCollectionViewDataSourceActions{
+    func didSelect(model: CountryModel) {
+        
+    }
 }
 
 extension OnboardingPresenter: OnboardingInteractorOutputProtocol {
     
+}
+
+enum OnboardingState {
+    case Country , Categories
 }
