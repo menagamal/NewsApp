@@ -1,0 +1,36 @@
+PODS:
+  - Alamofire (5.2.1)
+  - DataCache (1.5)
+  - IQKeyboardManagerSwift (6.5.5)
+  - Moya (14.0.0):
+    - Moya/Core (= 14.0.0)
+  - Moya/Core (14.0.0):
+    - Alamofire (~> 5.0)
+  - SDWebImage (4.4.8):
+    - SDWebImage/Core (= 4.4.8)
+  - SDWebImage/Core (4.4.8)
+
+DEPENDENCIES:
+  - DataCache
+  - IQKeyboardManagerSwift
+  - Moya
+  - SDWebImage (~> 4.0)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - DataCache
+    - IQKeyboardManagerSwift
+    - Moya
+    - SDWebImage
+
+SPEC CHECKSUMS:
+  Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
+  DataCache: 8099e01aa35c2fd30f3410aae14ef5a130f6524b
+  IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
+  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
+  SDWebImage: 783af2c3fa36291a250030c4752ee370a9a51d13
+
+PODFILE CHECKSUM: 92e4fd63e15839df09227cda709df3bff026fe79
+
+COCOAPODS: 1.9.1
