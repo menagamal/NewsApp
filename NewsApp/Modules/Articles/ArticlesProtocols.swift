@@ -20,7 +20,7 @@ protocol ArticlesViewProtocol: class {
 //MARK: Presenter -
 protocol ArticlesPresenterProtocol: class {
     var view: ArticlesViewProtocol?  { get set }
-
+    func searchArticles(str:String)
     func loadDetails()
     
 }
@@ -28,14 +28,20 @@ protocol ArticlesPresenterProtocol: class {
 //MARK: Interactor -
 protocol ArticlesInteractorOutputProtocol: class {
 
-    func didFetchArticles(articles:[Articles])
+    func didFetchArticles()
     func didFailFetchArticles()
+    func didSearchArticles()
+    
 }
 protocol ArticlesInteractorInputProtocol: class {
 
   var presenter: ArticlesInteractorOutputProtocol?  { get set }
     
     func loadArticles()
+    func searchArticles(str: String)
+    func getArticles() -> [Articles]
+    func getSearched() -> [Articles]
+    
 }
 
 //MARK: Router -

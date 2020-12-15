@@ -48,6 +48,7 @@
                     </view>
                     <connections>
                         <outlet property="articlesTableView" destination="ALJ-nS-av4" id="250-TF-7LQ"/>
+                        <outlet property="searchBar" destination="Ugb-0d-lTO" id="Qze-RH-cW9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

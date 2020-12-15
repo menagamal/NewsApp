@@ -11,10 +11,13 @@ import UIKit
 class ArticlesViewController: BaseViewController ,ArticlesViewProtocol{
     var presenter: ArticlesPresenterProtocol?
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     @IBOutlet weak var articlesTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.delegate = self
         ArticlesConfig().createModule(view: self)
         presenter?.loadDetails()
     }
@@ -28,5 +31,13 @@ class ArticlesViewController: BaseViewController ,ArticlesViewProtocol{
     }
     
     
+}
+
+
+extension ArticlesViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.presenter?.searchArticles(str: searchText)
+    }
+
 }
 

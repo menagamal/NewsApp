@@ -13,10 +13,16 @@ import Moya
 
 class ArticlesInteractor: BaseInteractor<AppTarget>,ArticlesInteractorInputProtocol {
     
+    
+    
+    
     weak var presenter: ArticlesInteractorOutputProtocol?
     
     var requestProvider = MoyaProvider<AppTarget>(callbackQueue: DispatchQueue.global(qos: .utility))
     
+    private var articles = [Articles]()
+    
+    private var searchedArticles = [Articles]()
     
     func loadArticles() {
         
@@ -28,7 +34,9 @@ class ArticlesInteractor: BaseInteractor<AppTarget>,ArticlesInteractorInputProto
                         if response.statusCode == BaseConstant.Codes.success.rawValue {
                             let responseModel: ArticlesResponse = try response.map(ArticlesResponse.self)
                             if let presenter = self.presenter , let articles = responseModel.articles {
-                                presenter.didFetchArticles(articles: self.sortArticlesByDates(articles: articles))
+                                //presenter.didFetchArticles(articles: self.sortArticlesByDates(articles: articles))
+                                self.articles = self.sortArticlesByDates(articles: articles)
+                                presenter.didFetchArticles()
                             } else {
                                 self.presenter?.didFailFetchArticles()
                             }
@@ -49,11 +57,37 @@ class ArticlesInteractor: BaseInteractor<AppTarget>,ArticlesInteractorInputProto
             
             
         }
+        
+        
+        
+    }
+    func searchArticles(str: String) {
+        self.searchedArticles.removeAll()
+        if str.isEmpty {
+            self.searchedArticles = articles
+        } else {
+            for item  in articles {
+                if let title = item.title{
+                    if title.contains(str) {
+                        self.searchedArticles.append(item)
+                    }
+                }
+            }
+            
+        }
+        self.presenter?.didSearchArticles()
+    }
+    
+    func getArticles() -> [Articles] {
+        return self.articles
+    }
+    func getSearched() -> [Articles]  {
+        return self.searchedArticles
     }
     
     private func sortArticlesByDates(articles:[Articles]) -> [Articles]{
         return articles.sorted(by: { $0.publishedAtDate > $1.publishedAtDate })
     }
-        
-        
+    
+    
 }

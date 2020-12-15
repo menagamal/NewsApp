@@ -11,7 +11,7 @@
 import UIKit
 
 class ArticlesPresenter: BasePresenter,ArticlesPresenterProtocol {
-
+    
     weak internal var view: ArticlesViewProtocol?
     
     var interactor: ArticlesInteractorInputProtocol?
@@ -20,7 +20,7 @@ class ArticlesPresenter: BasePresenter,ArticlesPresenterProtocol {
     
     private var dataSource: ArticlesTableViewDataSource?
     
-
+    
     init(view: ArticlesViewProtocol, interactor: ArticlesInteractorInputProtocol?, router: ArticlesRouterProtocol) {
         self.view = view
         self.interactor = interactor
@@ -30,22 +30,33 @@ class ArticlesPresenter: BasePresenter,ArticlesPresenterProtocol {
         self.baseView?.showLoadingIndicator()
         self.interactor?.loadArticles()
     }
-
+    func searchArticles(str: String) {
+        self.interactor?.searchArticles(str: str)
+        
+    }
+    
 }
 
 extension ArticlesPresenter: ArticlesInteractorOutputProtocol {
-    func didFetchArticles(articles: [Articles]) {
+    func didFetchArticles() {
         self.baseView?.hideLoadingIndicator()
-        guard  let view = self.view else {
+        guard  let view = self.view , let interactor = self.interactor else {
             return
         }
-        self.dataSource = ArticlesTableViewDataSource(delegate: self, tableView: view.articlesTableView, articles: articles)
+        self.dataSource = ArticlesTableViewDataSource(delegate: self, tableView: view.articlesTableView, articles: interactor.getArticles())
     }
     
     func didFailFetchArticles() {
         self.baseView?.hideLoadingIndicator()
     }
     
+    func didSearchArticles() {
+        
+        guard  let view = self.view , let interactor = self.interactor else {
+            return
+        }
+        self.dataSource = ArticlesTableViewDataSource(delegate: self, tableView: view.articlesTableView, articles: interactor.getSearched())
+    }
     
 }
 
