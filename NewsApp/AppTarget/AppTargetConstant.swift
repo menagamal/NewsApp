@@ -9,6 +9,8 @@
 
 import Foundation
 
+//https://newsapi.org/v2/sources?language=en&country=us&apiKey=d61459448d394cc495267faf0785baf3
+
 enum AppTargetConstant {
     enum Keys {
         static let apiKey = "d61459448d394cc495267faf0785baf3"
@@ -51,36 +53,15 @@ enum AppTargetConstant {
     }
     
     enum EndPoint {
-        
-        static let wallet = "customer/wallet"
-        static let verifyCustomerNumberAmount = "business/issue/verify-customer-number"
-        static let setCustomerNumberAmount = "business/issue/amount"
-        static let updateProfile = "auth/profile"
-        static let share = "customer/share"
-        static let like = "customer/review"
-        static let vouchers = "business/vouchers"
-        static let withdraw = "customer/withdraw"
-        static let home = "customer/home"
-        static let myStores = "customer/listStores"
-        static let listStoreReviews = "customer/listStoreReviews"
+        static let articles = "top-headlines"
     }
     
-    enum Parameters {
-        static let customerNumber = "customerNumber"
-        static let voucher_id = "voucher_id"
-        static let firstName = "first_name"
-        static let lastName = "last_name"
-        static let email = "email"
-        static let currentPass = "current_password"
-        static let walletId = "wallet_id"
-        static let bankAccount = "bank_account"
-        static let amount = "amount"
-        static let fullName = "full_name"
-        static let comment = "comment"
-        static let photo = "photo"
-        static let rate = "rate"
+    enum Parameters{
+        static let language = "language"
+        static let country = "country"
+        static let apiKey = "apiKey"
+
     }
-    
     
 }
 struct CountryModel {

@@ -9,20 +9,47 @@
 //
 
 import UIKit
+import Moya
 
 class ArticlesInteractor: BaseInteractor<AppTarget>,ArticlesInteractorInputProtocol {
     
     weak var presenter: ArticlesInteractorOutputProtocol?
-    func loadArticles() {
-//        request(targetType: .signIn(email: email, pass: pass)) { (response: UserModel) in
-//            UserDefaultsHandler().setLoggedIn(value: true)
-//            if  let token = response.token {
-//                UserDefaultsHandler().setUserToken(value: token)
-//            }
-//            UserDefaultsHandler().setUser(user: response)
-//            self.presenter?.didBussLogin()
-//        }
-    }
     
-
+    var requestProvider = MoyaProvider<AppTarget>(callbackQueue: DispatchQueue.global(qos: .utility))
+    
+    
+    func loadArticles() {
+        
+        requestProvider.request(.articles) { result in
+            switch(result) {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    do {
+                        if response.statusCode == BaseConstant.Codes.success.rawValue {
+                            let responseModel: ArticlesResponse = try response.map(ArticlesResponse.self)
+                            if let presenter = self.presenter , let articles = responseModel.articles {
+                                presenter.didFetchArticles(articles: articles)
+                            } else {
+                                self.presenter?.didFailFetchArticles()
+                            }
+                            
+                            
+                        } else {
+                            self.presenter?.didFailFetchArticles()
+                        }
+                    } catch{
+                        self.presenter?.didFailFetchArticles()
+                    }
+                }
+            case .failure(_):
+                DispatchQueue.main.async {
+                    self.presenter?.didFailFetchArticles()
+                }
+            }
+            
+            
+        }
+    }
+        
+        
 }

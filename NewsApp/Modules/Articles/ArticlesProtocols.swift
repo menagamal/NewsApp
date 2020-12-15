@@ -14,6 +14,7 @@ import UIKit
 //MARK: View -
 protocol ArticlesViewProtocol: class {
     var presenter: ArticlesPresenterProtocol?  { get set }
+    var articlesTableView: UITableView! { get set }
 }
 //MARK: Presenter -
 protocol ArticlesPresenterProtocol: class {
@@ -25,7 +26,8 @@ protocol ArticlesPresenterProtocol: class {
 //MARK: Interactor -
 protocol ArticlesInteractorOutputProtocol: class {
 
-  
+    func didFetchArticles(articles:[Articles])
+    func didFailFetchArticles()
 }
 protocol ArticlesInteractorInputProtocol: class {
 

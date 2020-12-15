@@ -13,7 +13,7 @@ enum BaseConstant {
     // Production https://dev.waqood.xyz/alborg/api/customer/
     // Development https://dev.waqood.xyz/alborg/api/customer/
     
-    static let baseUrl = "https://coins.apis.live/api/"
+    static let baseUrl = "https://newsapi.org/v2/"
     
     enum Codes: Int {
         case success = 200

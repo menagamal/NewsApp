@@ -13,7 +13,9 @@ import UIKit
 class ArticlesPresenter: BasePresenter,ArticlesPresenterProtocol {
 
     weak internal var view: ArticlesViewProtocol?
+    
     var interactor: ArticlesInteractorInputProtocol?
+    
     private let router: ArticlesRouterProtocol
 
     init(view: ArticlesViewProtocol, interactor: ArticlesInteractorInputProtocol?, router: ArticlesRouterProtocol) {
@@ -29,5 +31,15 @@ class ArticlesPresenter: BasePresenter,ArticlesPresenterProtocol {
 }
 
 extension ArticlesPresenter: ArticlesInteractorOutputProtocol {
+    func didFetchArticles(articles: [Articles]) {
+        self.baseView?.hideLoadingIndicator()
+        
+        self.
+    }
+    
+    func didFailFetchArticles() {
+        self.baseView?.hideLoadingIndicator()
+    }
+    
     
 }

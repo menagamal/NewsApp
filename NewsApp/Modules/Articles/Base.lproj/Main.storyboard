@@ -14,9 +14,41 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Ugb-0d-lTO">
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <color key="barTintColor" red="0.89019607840000003" green="0.91372549020000005" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top HeadLines" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="476-21-ehH">
+                                <rect key="frame" x="16" y="124" width="145" height="53"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                <color key="textColor" red="0.14901960780000001" green="0.1960784314" blue="0.35686274509999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ALJ-nS-av4">
+                                <rect key="frame" x="0.0" y="193" width="414" height="669"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.89019607840000003" green="0.91372549020000005" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="476-21-ehH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="38g-cI-jR1"/>
+                            <constraint firstItem="ALJ-nS-av4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6La-aX-gj6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ugb-0d-lTO" secondAttribute="trailing" id="MzS-6G-TfI"/>
+                            <constraint firstItem="Ugb-0d-lTO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="OjQ-Ma-Gdk"/>
+                            <constraint firstItem="Ugb-0d-lTO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Pui-z4-Ddd"/>
+                            <constraint firstItem="476-21-ehH" firstAttribute="top" secondItem="Ugb-0d-lTO" secondAttribute="bottom" constant="24" id="W2R-1o-618"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ALJ-nS-av4" secondAttribute="trailing" id="cgL-dr-hsP"/>
+                            <constraint firstItem="476-21-ehH" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.35" id="jvg-gp-lD4"/>
+                            <constraint firstItem="ALJ-nS-av4" firstAttribute="top" secondItem="476-21-ehH" secondAttribute="bottom" constant="16" id="oLr-20-2pX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ALJ-nS-av4" secondAttribute="bottom" id="rt5-4m-LJg"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="articlesTableView" destination="ALJ-nS-av4" id="250-TF-7LQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

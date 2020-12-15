@@ -11,18 +11,16 @@ import UIKit
 class ArticlesViewController: BaseViewController ,ArticlesViewProtocol{
     var presenter: ArticlesPresenterProtocol?
     
+    @IBOutlet weak var articlesTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        ArticlesConfig().createModule(view: self)
+        presenter?.loadDetails()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        let vc: OnboardingViewController = UIViewController.instanceXib()
-//        OnboardingConfig().createModule(view: vc, state: .Country)
-//        //self.present(vc, animated: true, completion: nil)
-//        self.show(vc, sender: self)
     }
     
     
