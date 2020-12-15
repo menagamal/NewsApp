@@ -82,7 +82,7 @@ class ArticlesInteractor: BaseInteractor<AppTarget>,ArticlesInteractorInputProto
         return self.articles
     }
     func getSearched() -> [Articles]  {
-        return self.searchedArticles
+        return sortArticlesByDates(articles: self.searchedArticles)
     }
     
     private func sortArticlesByDates(articles:[Articles]) -> [Articles]{
