@@ -15,6 +15,8 @@
 		D00D18A82588C6F40060136B /* ArticlesProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D18A22588C6F40060136B /* ArticlesProtocols.swift */; };
 		D00D18A92588C6F40060136B /* ArticlesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D18A32588C6F40060136B /* ArticlesInteractor.swift */; };
 		D00D18AA2588C6F40060136B /* ArticlesConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D18A42588C6F40060136B /* ArticlesConfig.swift */; };
+		D00D18AF2588C9D90060136B /* ArticlesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D18AD2588C9D90060136B /* ArticlesResponse.swift */; };
+		D00D18B02588C9D90060136B /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00D18AE2588C9D90060136B /* Article.swift */; };
 		D03201442583D90F00456072 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03201432583D90F00456072 /* AppDelegate.swift */; };
 		D03201462583D90F00456072 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03201452583D90F00456072 /* SceneDelegate.swift */; };
 		D03201482583D90F00456072 /* ArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03201472583D90F00456072 /* ArticlesViewController.swift */; };
@@ -137,6 +139,8 @@
 		D00D18A22588C6F40060136B /* ArticlesProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesProtocols.swift; sourceTree = "<group>"; };
 		D00D18A32588C6F40060136B /* ArticlesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesInteractor.swift; sourceTree = "<group>"; };
 		D00D18A42588C6F40060136B /* ArticlesConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesConfig.swift; sourceTree = "<group>"; };
+		D00D18AD2588C9D90060136B /* ArticlesResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesResponse.swift; sourceTree = "<group>"; };
+		D00D18AE2588C9D90060136B /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		D03201402583D90F00456072 /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D03201432583D90F00456072 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D03201452583D90F00456072 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -294,6 +298,8 @@
 		D00D18AC2588C8970060136B /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				D00D18AE2588C9D90060136B /* Article.swift */,
+				D00D18AD2588C9D90060136B /* ArticlesResponse.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -938,6 +944,7 @@
 				D046847F25878A420010C936 /* Validator.swift in Sources */,
 				D046847C25878A420010C936 /* PopupDialogContainerView.swift in Sources */,
 				D04684AD25878A420010C936 /* BaseResponse.swift in Sources */,
+				D00D18B02588C9D90060136B /* Article.swift in Sources */,
 				D04684A625878A420010C936 /* UITextField+Additions.swift in Sources */,
 				D04684B125878A420010C936 /* BaseInteractor.swift in Sources */,
 				D046848525878A420010C936 /* CActivityIndicator.swift in Sources */,
@@ -974,6 +981,7 @@
 				D046848F25878A420010C936 /* Country.swift in Sources */,
 				D04684A425878A420010C936 /* UILabel+Additions.swift in Sources */,
 				D046849A25878A420010C936 /* UIViewController+Additions.swift in Sources */,
+				D00D18AF2588C9D90060136B /* ArticlesResponse.swift in Sources */,
 				D04684BE25878AB00010C936 /* AppTarget.swift in Sources */,
 				D04683FF258789F30010C936 /* OnboardingPresenter.swift in Sources */,
 				D00D18A72588C6F40060136B /* ArticlesRouter.swift in Sources */,
