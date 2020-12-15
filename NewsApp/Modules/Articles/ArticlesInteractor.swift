@@ -10,11 +10,10 @@
 
 import UIKit
 import Moya
+import DataCache
+import Network
 
 class ArticlesInteractor: BaseInteractor<AppTarget>,ArticlesInteractorInputProtocol {
-    
-    
-    
     
     weak var presenter: ArticlesInteractorOutputProtocol?
     
@@ -25,42 +24,20 @@ class ArticlesInteractor: BaseInteractor<AppTarget>,ArticlesInteractorInputProto
     private var searchedArticles = [Articles]()
     
     func loadArticles() {
-        
-        requestProvider.request(.articles) { result in
-            switch(result) {
-            case .success(let response):
-                DispatchQueue.main.async {
-                    do {
-                        if response.statusCode == BaseConstant.Codes.success.rawValue {
-                            let responseModel: ArticlesResponse = try response.map(ArticlesResponse.self)
-                            if let presenter = self.presenter , let articles = responseModel.articles {
-                                //presenter.didFetchArticles(articles: self.sortArticlesByDates(articles: articles))
-                                self.articles = self.sortArticlesByDates(articles: articles)
-                                presenter.didFetchArticles()
-                            } else {
-                                self.presenter?.didFailFetchArticles()
-                            }
-                            
-                            
-                        } else {
-                            self.presenter?.didFailFetchArticles()
-                        }
-                    } catch{
-                        self.presenter?.didFailFetchArticles()
-                    }
-                }
-            case .failure(_):
-                DispatchQueue.main.async {
-                    self.presenter?.didFailFetchArticles()
-                }
+        let monitor = NWPathMonitor()
+        monitor.pathUpdateHandler = { [unowned self ]path in
+            if path.status == .satisfied {
+                self.fetchArticles()
+            } else {
+                self.articles = self.loadFromCache()
+                self.presenter?.didFetchArticles()
             }
-            
-            
         }
-        
-        
-        
+        let queue = DispatchQueue(label: "Monitor")
+        monitor.start(queue: queue)
     }
+    
+    
     func searchArticles(str: String) {
         self.searchedArticles.removeAll()
         if str.isEmpty {
@@ -85,9 +62,55 @@ class ArticlesInteractor: BaseInteractor<AppTarget>,ArticlesInteractorInputProto
         return sortArticlesByDates(articles: self.searchedArticles)
     }
     
+}
+
+extension ArticlesInteractor {
+    private func fetchArticles(){
+        requestProvider.request(.articles) { [weak self] result in
+            guard let self = self else {return }
+            switch(result) {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    do {
+                        if response.statusCode == BaseConstant.Codes.success.rawValue {
+                            let responseModel: ArticlesResponse = try response.map(ArticlesResponse.self)
+                            if let presenter = self.presenter , let articles = responseModel.articles {
+                                
+                                self.articles = self.sortArticlesByDates(articles: articles)
+                                self.cacheData()
+                                presenter.didFetchArticles()
+                            } else {
+                                self.presenter?.didFailFetchArticles()
+                            }
+                            
+                            
+                        } else {
+                            self.presenter?.didFailFetchArticles()
+                        }
+                    } catch{
+                        self.presenter?.didFailFetchArticles()
+                    }
+                }
+            case .failure(_):
+                DispatchQueue.main.async {
+                    self.presenter?.didFailFetchArticles()
+                }
+            }
+            
+        }
+        
+        
+    }
     private func sortArticlesByDates(articles:[Articles]) -> [Articles]{
         return articles.sorted(by: { $0.publishedAtDate > $1.publishedAtDate })
     }
     
+    private func cacheData(){
+        DataCache.instance.write(array: self.articles, forKey: AppTargetConstant.Keys.articlesCache)
+    }
+    
+    private func loadFromCache() -> [Articles]{
+        return  DataCache.instance.readArray(forKey: AppTargetConstant.Keys.articlesCache) as? [Articles] ?? [Articles]()
+    }
     
 }

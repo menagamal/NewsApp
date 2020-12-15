@@ -12,6 +12,7 @@ target 'NewsApp' do
   pod 'DataCache'
   pod 'collection-view-layouts/TagsLayout'
   pod 'FittedSheets'
+  pod 'Cache'
   
   target 'NewsAppTests' do
     inherit! :search_paths

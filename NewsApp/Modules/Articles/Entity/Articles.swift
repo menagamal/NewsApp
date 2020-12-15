@@ -1,22 +1,18 @@
-/* 
-Copyright (c) 2020 Swift Models Generated from JSON powered by http://www.json4swift.com
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar
-
-*/
+//
+//  Articles.swift
+//  NewsApp
+//
+//  Created Mena Gamal on 12/15/20.
+//  Copyright © 2020 Mena Gamal. All rights reserved.
+//
 
 import Foundation
-struct Articles : Codable {
+class Articles : NSObject,Codable, NSCoding {
+    
 	let source : Source?
 	let author : String?
 	let title : String?
-	let description : String?
+	let desc : String?
 	let url : String?
 	let urlToImage : String?
 	let publishedAt : String?
@@ -28,19 +24,19 @@ struct Articles : Codable {
 		case source = "source"
 		case author = "author"
 		case title = "title"
-		case description = "description"
+		case desc = "description"
 		case url = "url"
 		case urlToImage = "urlToImage"
 		case publishedAt = "publishedAt"
 		case content = "content"
 	}
 
-	init(from decoder: Decoder) throws {
+    required init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		source = try values.decodeIfPresent(Source.self, forKey: .source)
 		author = try values.decodeIfPresent(String.self, forKey: .author)
 		title = try values.decodeIfPresent(String.self, forKey: .title)
-		description = try values.decodeIfPresent(String.self, forKey: .description)
+		desc = try values.decodeIfPresent(String.self, forKey: .desc)
 		url = try values.decodeIfPresent(String.self, forKey: .url)
 		urlToImage = try values.decodeIfPresent(String.self, forKey: .urlToImage)
 		publishedAt = try values.decodeIfPresent(String.self, forKey: .publishedAt)
@@ -52,5 +48,34 @@ struct Articles : Codable {
         }
         
 	}
+    
+    func encode(with coder: NSCoder) {
+        coder.encode(self.source, forKey: CodingKeys.source.rawValue)
+        coder.encode(self.author, forKey: CodingKeys.author.rawValue)
+        coder.encode(self.title, forKey: CodingKeys.title.rawValue)
+        coder.encode(self.desc, forKey: CodingKeys.desc.rawValue)
+        coder.encode(self.url, forKey: CodingKeys.url.rawValue)
+        coder.encode(self.urlToImage, forKey: CodingKeys.urlToImage.rawValue)
+        coder.encode(self.publishedAt, forKey: CodingKeys.publishedAt.rawValue)
+        coder.encode(self.content, forKey: CodingKeys.content.rawValue)
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        if let publishedAt = publishedAt, let date = dateFormatterGet.date(from: publishedAt) {
+            publishedAtDate = date
+        }
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        self.source = coder.decodeObject(forKey: CodingKeys.source.rawValue) as? Source
+        self.author = coder.decodeObject(forKey: CodingKeys.author.rawValue) as? String
+        self.title = coder.decodeObject(forKey: CodingKeys.title.rawValue) as? String
+        self.desc = coder.decodeObject(forKey: CodingKeys.desc.rawValue) as? String
+        self.url = coder.decodeObject(forKey: CodingKeys.url.rawValue) as? String
+        self.urlToImage = coder.decodeObject(forKey: CodingKeys.urlToImage.rawValue) as? String
+        self.publishedAt = coder.decodeObject(forKey: CodingKeys.publishedAt.rawValue) as? String
+        self.content = coder.decodeObject(forKey: CodingKeys.content.rawValue) as? String
+        
+    }
 
 }

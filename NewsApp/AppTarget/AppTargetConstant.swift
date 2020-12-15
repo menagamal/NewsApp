@@ -14,6 +14,7 @@ import Foundation
 enum AppTargetConstant {
     enum Keys {
         static let apiKey = "d61459448d394cc495267faf0785baf3"
+        static let articlesCache = "articlesCache"
     }
     
     static let Categories: [CountryModel] = [

@@ -46,7 +46,7 @@ class ArticleTableViewCell: UITableViewCell {
             labelTitle.isHidden = true
         }
         
-        if let value = article.description {
+        if let value = article.desc {
             labelDesc.text = value
         } else {
             labelDesc.isHidden = true
