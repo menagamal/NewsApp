@@ -32,12 +32,14 @@ protocol OnboardingInteractorOutputProtocol: class {
 protocol OnboardingInteractorInputProtocol: class {
     
     var presenter: OnboardingInteractorOutputProtocol?  { get set }
-    func loadAllCountries()
-    func loadAllCategories()
+    func saveCountry(code:String)
+    func saveCategories(categories:[String])
 }
 
 //MARK: Router -
 protocol OnboardingRouterProtocol: class {
     var view: UIViewController! { get set }
+    func goToNext()
+    func goToHome()
     
 }

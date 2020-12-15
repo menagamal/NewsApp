@@ -12,7 +12,15 @@ import UIKit
 
 class OnboardingRouter: OnboardingRouterProtocol {
     
-     var view: UIViewController!
     
-  
+    var view: UIViewController!
+    func goToNext() {
+        
+    }
+    
+    func goToHome() {
+        
+    }
+    
+    
 }

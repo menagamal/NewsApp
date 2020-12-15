@@ -14,7 +14,16 @@ enum AppTargetConstant {
         static let apiKey = "d61459448d394cc495267faf0785baf3"
     }
     
-
+    static let Categories: [CountryModel] = [
+        CountryModel(title: "business", id: "") ,
+        CountryModel(title: "entertainment", id: "") ,
+        CountryModel(title: "general", id: "") ,
+        CountryModel(title: "health", id: "") ,
+        CountryModel(title: "science", id: "") ,
+        CountryModel(title: "sports", id: "") ,
+        CountryModel(title: "technology", id: "")
+    ]
+    
     static let Countries: [CountryModel] = [
         CountryModel(title: "United Arab Emirates", id: "ae") ,
         CountryModel(title: "Argentina", id: "ar") ,
@@ -33,42 +42,13 @@ enum AppTargetConstant {
         CountryModel(title: "France", id: "fr") ,
         CountryModel(title: "United Kingdom", id: "gb") ,
         CountryModel(title: "Germany", id: "gr") ,
-        CountryModel(title: "Hungry", id: "hu") 
-//        CountryModel(title: "", id: "id") ,
-//        CountryModel(title: "", id: "ie") ,
-//        CountryModel(title: "", id: "il") ,
-//        CountryModel(title: "", id: "in") ,
-//        CountryModel(title: "", id: "it") ,
-//        CountryModel(title: "", id: "jp") ,
-//        CountryModel(title: "", id: "kr") ,
-//        CountryModel(title: "", id: "lt") ,
-//        CountryModel(title: "", id: "lv") ,
-//        CountryModel(title: "", id: "ma") ,
-//        CountryModel(title: "", id: "mx") ,
-//        CountryModel(title: "", id: "my") ,
-//        CountryModel(title: "", id: "ng") ,
-//        CountryModel(title: "", id: "nl") ,
-//        CountryModel(title: "", id: "no") ,
-//        CountryModel(title: "", id: "nz") ,
-//        CountryModel(title: "", id: "ph") ,
-//        CountryModel(title: "", id: "pl") ,
-//        CountryModel(title: "", id: "pt") ,
-//        CountryModel(title: "", id: "ro") ,
-//        CountryModel(title: "", id: "rs") ,
-//        CountryModel(title: "", id: "ru") ,
-//        CountryModel(title: "", id: "sa") ,
-//        CountryModel(title: "", id: "se") ,
-//        CountryModel(title: "", id: "sg") ,
-//        CountryModel(title: "", id: "si") ,
-//        CountryModel(title: "", id: "sk") ,
-//        CountryModel(title: "", id: "th") ,
-//        CountryModel(title: "", id: "tr") ,
-//        CountryModel(title: "", id: "tw") ,
-//        CountryModel(title: "", id: "ua") ,
-//        CountryModel(title: "", id: "us") ,
-//        CountryModel(title: "", id: "ve") ,
-//        CountryModel(title: "", id: "za")
+        CountryModel(title: "Hungry", id: "hu")
     ]
+    
+    enum UserDefaultsKeys {
+        static let country = "country"
+        static let categories = "categories"
+    }
     
     enum EndPoint {
         

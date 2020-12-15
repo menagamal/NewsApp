@@ -44,13 +44,21 @@ class OnboardingPresenter: BasePresenter,OnboardingPresenterProtocol {
             break
         }
     }
+    
     func goToNextPage() {
+        guard let dataSource = dataSource else {
+            return
+        }
         switch self.state {
         case .Categories:
-            
+            if let str = dataSource.selected.first {
+                self.interactor?.saveCountry(code: str)
+            }
+            self.router.goToHome()
             break
         case .Country:
-            
+            self.interactor?.saveCategories(categories: dataSource.selected)
+            self.router.goToNext()
             break
         }
     }

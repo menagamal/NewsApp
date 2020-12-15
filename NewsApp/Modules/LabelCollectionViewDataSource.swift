@@ -15,6 +15,7 @@ class LabelCollectionViewDataSource:NSObject, UICollectionViewDataSource, UIColl
     var collection:UICollectionView!
     var delegate:LabelCollectionViewDataSourceActions!
     
+    var selected = [String]()
     override init() {
         super.init()
     }
