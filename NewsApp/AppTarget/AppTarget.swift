@@ -46,8 +46,12 @@ extension AppTarget: TargetType {
     var task: Task {
         switch self {
         case  .articles:
+            let country = UserDefaultsHandler().getCountry()
+            let categories = UserDefaultsHandler().getCategories()
+            
             let parameters: [String: Any] = [AppTargetConstant.Parameters.language: "en",
-                                             AppTargetConstant.Parameters.country: "us",
+                                             AppTargetConstant.Parameters.country: country,
+                                             AppTargetConstant.Parameters.categories: categories.first ?? "",
                                              AppTargetConstant.Parameters.apiKey: AppTargetConstant.Keys.apiKey
             ]
             

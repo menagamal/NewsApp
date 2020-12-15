@@ -14,8 +14,26 @@ class LabelCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var labelTitle: UILabel!
     
     func setDetails(title:String,state:LabelCollectionViewCellStates) {
+        
         self.labelTitle.text = title
         contanierView.cornerRadius = contanierView.frame.height / 3.5
+        
+        switch state {
+        case .Selected:
+            contanierView.borderWidth = 1
+            contanierView.borderColor = UIColor(hexString: "#FFA200")
+            contanierView.backgroundColor = UIColor(hexString: "#FFA200")
+            labelTitle.textColor = .white
+            
+            break
+        case .Unselected:
+            contanierView.borderWidth = 1
+            contanierView.borderColor = .lightGray
+            contanierView.backgroundColor = .clear
+            labelTitle.textColor = .lightGray
+            
+            break
+        }
     }
 
 }

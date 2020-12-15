@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FittedSheets
 
 class ArticlesViewController: BaseViewController ,ArticlesViewProtocol{
     var presenter: ArticlesPresenterProtocol?
@@ -17,14 +18,20 @@ class ArticlesViewController: BaseViewController ,ArticlesViewProtocol{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let country = UserDefaultsHandler().getCountry()
+        if country.isEmpty {
+            let vc: OnboardingViewController = UIViewController.instanceXib()
+            OnboardingConfig().createModule(view: vc, state: .Country)
+            let nav = UINavigationController(rootViewController: vc)
+            UIApplication.shared.windows.first?.rootViewController = nav
+            UIApplication.shared.windows.first?.makeKeyAndVisible()
+        }
         searchBar.delegate = self
         ArticlesConfig().createModule(view: self)
         presenter?.loadDetails()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
     
     func openSafari(url: URL) {
         UIApplication.shared.open(url)
@@ -38,6 +45,6 @@ extension ArticlesViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.presenter?.searchArticles(str: searchText)
     }
-
+    
 }
 

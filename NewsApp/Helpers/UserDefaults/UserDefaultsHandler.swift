@@ -13,7 +13,7 @@ import Foundation
 class UserDefaultsHandler {
     
     enum Settings : String {
-        case IsLoggedIn, UserToken , User
+        case IsLoggedIn, UserToken , User, Country,Categories
         
     }
     
@@ -21,6 +21,29 @@ class UserDefaultsHandler {
     
     init() {
         userDefault = UserDefaults.standard
+    }
+    
+    
+    func setCountry(value:String)  {
+        let _ =  save(object: value, setting: Settings.Country)
+    }
+    
+    func getCountry()  -> String {
+        if let object = userDefault.object(forKey: Settings.Country.rawValue) {
+            return object as! String
+        }
+        return ""
+    }
+    
+    
+    func setCategories(value:[String])  {
+        let _ =  save(object: value, setting: Settings.Categories)
+    }
+    func getCategories()  -> [String] {
+        if let object = userDefault.object(forKey: Settings.Categories.rawValue) {
+            return object as! [String]
+        }
+        return [String]()
     }
     
     

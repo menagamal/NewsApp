@@ -15,14 +15,12 @@ class OnboardingInteractor: BaseInteractor<AppTarget>,OnboardingInteractorInputP
     weak var presenter: OnboardingInteractorOutputProtocol?
     
     func saveCountry(code:String) {
-        let defaults = UserDefaults.standard
-        defaults.set(code, forKey: AppTargetConstant.UserDefaultsKeys.country)
-
+       
+        UserDefaultsHandler().setCountry(value: code)
     }
     
      func saveCategories(categories:[String]) {
-        let defaults = UserDefaults.standard
-        defaults.set(categories, forKey: AppTargetConstant.UserDefaultsKeys.categories)
+        UserDefaultsHandler().setCategories(value: categories)
     }
     
     

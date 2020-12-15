@@ -35,11 +35,11 @@ class OnboardingPresenter: BasePresenter,OnboardingPresenterProtocol {
         }
         switch self.state {
         case .Categories:
-            dataSource = LabelCollectionViewDataSource(collection: view.topicsCollections, models: AppTargetConstant.Countries, delegate: self)
-            view.loadCountriesLayout()
+            dataSource = LabelCollectionViewDataSource(collection: view.topicsCollections, models: AppTargetConstant.Categories, delegate: self,state: .Categories)
+            view.loadCategoriesLayout()
             break
         case .Country:
-            dataSource = LabelCollectionViewDataSource(collection: view.topicsCollections, models: AppTargetConstant.Countries, delegate: self)
+            dataSource = LabelCollectionViewDataSource(collection: view.topicsCollections, models: AppTargetConstant.Countries, delegate: self,state: .Country)
             view.loadCountriesLayout()
             break
         }
@@ -51,13 +51,14 @@ class OnboardingPresenter: BasePresenter,OnboardingPresenterProtocol {
         }
         switch self.state {
         case .Categories:
-            if let str = dataSource.selected.first {
-                self.interactor?.saveCountry(code: str)
-            }
+            self.interactor?.saveCategories(categories: dataSource.selectedArray)
             self.router.goToHome()
             break
         case .Country:
-            self.interactor?.saveCategories(categories: dataSource.selected)
+            if let str = dataSource.selectedArray.first {
+                self.interactor?.saveCountry(code: str)
+            }
+            
             self.router.goToNext()
             break
         }
@@ -67,7 +68,16 @@ class OnboardingPresenter: BasePresenter,OnboardingPresenterProtocol {
 
 extension  OnboardingPresenter:LabelCollectionViewDataSourceActions{
     func didSelect(model: CountryModel) {
-        
+        switch self.state {
+        case .Country:
+            self.goToNextPage()
+            break
+        case .Categories:
+            if dataSource!.selectedArray.count > 2 {
+                self.goToNextPage()
+            }
+            break
+        }
     }
 }
 

@@ -15,9 +15,7 @@ class OnboardingViewController: BaseViewController, OnboardingViewProtocol {
     @IBOutlet weak var labelTitle: UILabel!
     
     @IBOutlet weak var topicsCollections: UICollectionView!
-    
-    @IBOutlet weak var btnNext: UIButton!
-    
+     
     var presenter: OnboardingPresenterProtocol?
     
     override func viewDidLoad() {
@@ -26,17 +24,13 @@ class OnboardingViewController: BaseViewController, OnboardingViewProtocol {
         
     }
     
-    @IBAction func nextAction(_ sender: UIButton) {
-        self.presenter?.goToNextPage()
-    }
     
     func loadCountriesLayout() {
         self.labelTitle.text = "Choose your country"
-        self.btnNext.setTitle("Next", for: .normal)
     }
     
     func loadCategoriesLayout() {
         self.labelTitle.text = "Choose your categories"
-        self.btnNext.setTitle("Submit", for: .normal)
+    
     }
 }

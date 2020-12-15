@@ -11,6 +11,7 @@ target 'NewsApp' do
   pod 'SDWebImage', '~> 4.0'
   pod 'DataCache'
   pod 'collection-view-layouts/TagsLayout'
+  pod 'FittedSheets'
   
   target 'NewsAppTests' do
     inherit! :search_paths

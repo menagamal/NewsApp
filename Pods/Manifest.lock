@@ -4,6 +4,7 @@ PODS:
   - collection-view-layouts/TagsLayout (0.2.2):
     - collection-view-layouts/Core
   - DataCache (1.5)
+  - FittedSheets (1.4.6)
   - IQKeyboardManagerSwift (6.5.5)
   - Moya (14.0.0):
     - Moya/Core (= 14.0.0)
@@ -16,6 +17,7 @@ PODS:
 DEPENDENCIES:
   - collection-view-layouts/TagsLayout
   - DataCache
+  - FittedSheets
   - IQKeyboardManagerSwift
   - Moya
   - SDWebImage (~> 4.0)
@@ -25,6 +27,7 @@ SPEC REPOS:
     - Alamofire
     - collection-view-layouts
     - DataCache
+    - FittedSheets
     - IQKeyboardManagerSwift
     - Moya
     - SDWebImage
@@ -33,10 +36,11 @@ SPEC CHECKSUMS:
   Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
   collection-view-layouts: 474ec4cce601a26247737227a97fa6a4eb30213f
   DataCache: 8099e01aa35c2fd30f3410aae14ef5a130f6524b
+  FittedSheets: 7f37fee2567d15dcde391f31eccbffb660ddebf0
   IQKeyboardManagerSwift: 0fb93310284665245591f50f7a5e38de615960b7
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   SDWebImage: 783af2c3fa36291a250030c4752ee370a9a51d13
 
-PODFILE CHECKSUM: 8980ea7ad618e4c3a203896d5e5d4268973669c4
+PODFILE CHECKSUM: 23853b71d1bc8b0421d26dff6fc99417ca7a96f0
 
 COCOAPODS: 1.9.1

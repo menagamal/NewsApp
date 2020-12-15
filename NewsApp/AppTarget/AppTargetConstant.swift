@@ -17,13 +17,13 @@ enum AppTargetConstant {
     }
     
     static let Categories: [CountryModel] = [
-        CountryModel(title: "business", id: "") ,
-        CountryModel(title: "entertainment", id: "") ,
-        CountryModel(title: "general", id: "") ,
-        CountryModel(title: "health", id: "") ,
-        CountryModel(title: "science", id: "") ,
-        CountryModel(title: "sports", id: "") ,
-        CountryModel(title: "technology", id: "")
+        CountryModel(title: "business", id: "1") ,
+        CountryModel(title: "entertainment", id: "2") ,
+        CountryModel(title: "general", id: "3") ,
+        CountryModel(title: "health", id: "4") ,
+        CountryModel(title: "science", id: "5") ,
+        CountryModel(title: "sports", id: "6") ,
+        CountryModel(title: "technology", id: "7")
     ]
     
     static let Countries: [CountryModel] = [
@@ -59,6 +59,7 @@ enum AppTargetConstant {
     enum Parameters{
         static let language = "language"
         static let country = "country"
+        static let categories = "category"
         static let apiKey = "apiKey"
 
     }

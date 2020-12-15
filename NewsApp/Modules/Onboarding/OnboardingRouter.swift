@@ -15,11 +15,16 @@ class OnboardingRouter: OnboardingRouterProtocol {
     
     var view: UIViewController!
     func goToNext() {
-        
+        let vc:OnboardingViewController = UIViewController.instanceXib()
+        OnboardingConfig().createModule(view: vc, state: .Categories)
+        view.show(vc, sender: view)
     }
     
     func goToHome() {
-        
+        let story = UIStoryboard(name: "Main", bundle:nil)
+        let vc = story.instantiateInitialViewController()
+        UIApplication.shared.windows.first?.rootViewController = vc
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
     
     
