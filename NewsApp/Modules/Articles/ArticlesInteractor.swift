@@ -28,7 +28,7 @@ class ArticlesInteractor: BaseInteractor<AppTarget>,ArticlesInteractorInputProto
                         if response.statusCode == BaseConstant.Codes.success.rawValue {
                             let responseModel: ArticlesResponse = try response.map(ArticlesResponse.self)
                             if let presenter = self.presenter , let articles = responseModel.articles {
-                                presenter.didFetchArticles(articles: articles)
+                                presenter.didFetchArticles(articles: self.sortArticlesByDates(articles: articles))
                             } else {
                                 self.presenter?.didFailFetchArticles()
                             }
@@ -49,6 +49,10 @@ class ArticlesInteractor: BaseInteractor<AppTarget>,ArticlesInteractorInputProto
             
             
         }
+    }
+    
+    private func sortArticlesByDates(articles:[Articles]) -> [Articles]{
+        return articles.sorted(by: { $0.publishedAtDate > $1.publishedAtDate })
     }
         
         
