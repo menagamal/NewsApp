@@ -24,8 +24,12 @@ class ArticleTableViewCell: UITableViewCell {
             articleImageView.sd_setImage(with: URL(string: urlStr), completed: nil)
         }
         
-        if let value = article.publishedAt {
-            labelDate.text = value
+        if let _ = article.publishedAt {
+            let dateFormatterPrint = DateFormatter()
+            dateFormatterPrint.dateFormat = "MMM dd,yyyy"
+            
+            
+            labelDate.text = dateFormatterPrint.string(from: article.publishedAtDate)
         } else {
             labelDate.isHidden = true
         }

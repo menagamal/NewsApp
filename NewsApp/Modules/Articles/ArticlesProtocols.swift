@@ -15,12 +15,14 @@ import UIKit
 protocol ArticlesViewProtocol: class {
     var presenter: ArticlesPresenterProtocol?  { get set }
     var articlesTableView: UITableView! { get set }
+    func openSafari(url:URL)
 }
 //MARK: Presenter -
 protocol ArticlesPresenterProtocol: class {
     var view: ArticlesViewProtocol?  { get set }
 
     func loadDetails()
+    
 }
 
 //MARK: Interactor -

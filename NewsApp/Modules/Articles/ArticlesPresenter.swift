@@ -17,6 +17,9 @@ class ArticlesPresenter: BasePresenter,ArticlesPresenterProtocol {
     var interactor: ArticlesInteractorInputProtocol?
     
     private let router: ArticlesRouterProtocol
+    
+    private var dataSource: ArticlesTableViewDataSource?
+    
 
     init(view: ArticlesViewProtocol, interactor: ArticlesInteractorInputProtocol?, router: ArticlesRouterProtocol) {
         self.view = view
@@ -33,8 +36,10 @@ class ArticlesPresenter: BasePresenter,ArticlesPresenterProtocol {
 extension ArticlesPresenter: ArticlesInteractorOutputProtocol {
     func didFetchArticles(articles: [Articles]) {
         self.baseView?.hideLoadingIndicator()
-        
-        self.
+        guard  let view = self.view else {
+            return
+        }
+        self.dataSource = ArticlesTableViewDataSource(delegate: self, tableView: view.articlesTableView, articles: articles)
     }
     
     func didFailFetchArticles() {
@@ -42,4 +47,13 @@ extension ArticlesPresenter: ArticlesInteractorOutputProtocol {
     }
     
     
+}
+
+extension ArticlesPresenter: MyStoresCellDataSourceDelegate{
+    func didSelected(url: String) {
+        guard  let view = self.view ,let sourceUrl = URL(string: url) else {
+            return
+        }
+        view.openSafari(url: sourceUrl)
+    }
 }

@@ -22,6 +22,7 @@ struct Articles : Codable {
 	let publishedAt : String?
 	let content : String?
 
+    var publishedAtDate = Date ()
 	enum CodingKeys: String, CodingKey {
 
 		case source = "source"
@@ -44,6 +45,12 @@ struct Articles : Codable {
 		urlToImage = try values.decodeIfPresent(String.self, forKey: .urlToImage)
 		publishedAt = try values.decodeIfPresent(String.self, forKey: .publishedAt)
 		content = try values.decodeIfPresent(String.self, forKey: .content)
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        if let publishedAt = publishedAt, let date = dateFormatterGet.date(from: publishedAt) {
+            publishedAtDate = date
+        }
+        
 	}
 
 }

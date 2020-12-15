@@ -23,6 +23,10 @@ class ArticlesViewController: BaseViewController ,ArticlesViewProtocol{
         super.viewDidAppear(animated)
     }
     
+    func openSafari(url: URL) {
+        UIApplication.shared.open(url)
+    }
+    
     
 }
 
