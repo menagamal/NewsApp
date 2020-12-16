@@ -20,8 +20,11 @@ class OnboardingViewController: BaseViewController, OnboardingViewProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter?.loadDetails()
         
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        presenter?.loadDetails()
     }
     
     

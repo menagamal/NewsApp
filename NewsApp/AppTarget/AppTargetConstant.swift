@@ -15,7 +15,10 @@ enum AppTargetConstant {
     enum Keys {
         static let apiKey = "d61459448d394cc495267faf0785baf3"
         static let articlesCache = "articlesCache"
+        static let favCache = "favCache"
     }
+    
+    static var Favourites: [Articles] = []
     
     static let Categories: [CountryModel] = [
         CountryModel(title: "business", id: "1") ,

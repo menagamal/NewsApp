@@ -41,6 +41,7 @@ protocol ArticlesInteractorInputProtocol: class {
     func searchArticles(str: String)
     func getArticles() -> [Articles]
     func getSearched() -> [Articles]
+    func toggleFavourite(article:Articles)
     
 }
 

@@ -61,6 +61,21 @@ class ArticlesInteractor: BaseInteractor<AppTarget>,ArticlesInteractorInputProto
     func getSearched() -> [Articles]  {
         return sortArticlesByDates(articles: self.searchedArticles)
     }
+    func toggleFavourite(article: Articles) {
+        var fav =  DataCache.instance.readArray(forKey: AppTargetConstant.Keys.favCache) as? [Articles] ?? [Articles]()
+        var found = false
+        for (i,item) in fav.enumerated() {
+            if item.title == article.title {
+                found = true
+                fav.remove(at: i)
+            }
+        }
+        if !found {
+            fav.append(article)
+        }
+        
+        DataCache.instance.write(array: fav, forKey: AppTargetConstant.Keys.favCache)
+    }
     
 }
 
