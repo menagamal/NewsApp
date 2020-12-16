@@ -23,6 +23,10 @@ class ArticlesInteractor: BaseInteractor<AppTarget>,ArticlesInteractorInputProto
     
     private var searchedArticles = [Articles]()
     
+    func loadFavourites() {
+        self.articles = self.loadFav()
+        self.presenter?.didFetchArticles()
+    }
     func loadArticles() {
         let monitor = NWPathMonitor()
         monitor.pathUpdateHandler = { [unowned self ]path in
@@ -73,7 +77,7 @@ class ArticlesInteractor: BaseInteractor<AppTarget>,ArticlesInteractorInputProto
         if !found {
             fav.append(article)
         }
-        
+        AppTargetConstant.Favourites = fav
         DataCache.instance.write(array: fav, forKey: AppTargetConstant.Keys.favCache)
     }
     
@@ -126,6 +130,10 @@ extension ArticlesInteractor {
     
     private func loadFromCache() -> [Articles]{
         return  DataCache.instance.readArray(forKey: AppTargetConstant.Keys.articlesCache) as? [Articles] ?? [Articles]()
+    }
+    
+    private func loadFav() -> [Articles]{
+        return  DataCache.instance.readArray(forKey: AppTargetConstant.Keys.favCache) as? [Articles] ?? [Articles]()
     }
     
 }

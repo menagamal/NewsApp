@@ -53,6 +53,13 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hH-tm-DEP">
+                                <rect key="frame" x="360" y="32" width="32" height="32"/>
+                                <state key="normal" image="btnFav.setImage(UIImage(named: &quot;&quot;), for: .normal)"/>
+                                <connections>
+                                    <action selector="favAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="QpJ-rc-2Hk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -63,6 +70,8 @@
                             <constraint firstAttribute="trailing" secondItem="ocK-Vt-dWG" secondAttribute="trailing" id="j0n-ba-2C6"/>
                             <constraint firstAttribute="trailing" secondItem="shm-VY-etn" secondAttribute="trailing" constant="12" id="mTO-Hw-Weu"/>
                             <constraint firstItem="ocK-Vt-dWG" firstAttribute="leading" secondItem="yS2-eO-oS8" secondAttribute="leading" id="ozA-AZ-U4x"/>
+                            <constraint firstAttribute="trailing" secondItem="9hH-tm-DEP" secondAttribute="trailing" constant="32" id="pgE-VK-5cD"/>
+                            <constraint firstItem="9hH-tm-DEP" firstAttribute="top" secondItem="yS2-eO-oS8" secondAttribute="top" constant="32" id="tJM-EI-EUP"/>
                             <constraint firstItem="ocK-Vt-dWG" firstAttribute="top" secondItem="yS2-eO-oS8" secondAttribute="top" id="ztZ-xh-Ivd"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -82,6 +91,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="articleImageView" destination="ocK-Vt-dWG" id="iaq-TC-Mb8"/>
+                <outlet property="btnFav" destination="9hH-tm-DEP" id="nVw-OO-h0g"/>
                 <outlet property="labelDate" destination="AXJ-xZ-nRp" id="LsF-2t-3jy"/>
                 <outlet property="labelDesc" destination="tST-xb-roO" id="Au0-U7-bzL"/>
                 <outlet property="labelSource" destination="jcC-bf-l8E" id="9Pt-Tg-Yw1"/>
@@ -90,4 +100,7 @@
             <point key="canvasLocation" x="102.89855072463769" y="168.75"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="btnFav.setImage(UIImage(named: &quot;&quot;), for: .normal)" width="16" height="16"/>
+    </resources>
 </document>

@@ -14,5 +14,11 @@ class ArticlesRouter: ArticlesRouterProtocol {
     
      var view: UIViewController!
     
+    func goToFavourites() {
+        let story = UIStoryboard(name: "Main", bundle:nil)
+        let vc = story.instantiateViewController(identifier: "ArticlesViewController") as! ArticlesViewController
+        vc.isFav = true
+        view.show(vc, sender: view)
+    }
   
 }

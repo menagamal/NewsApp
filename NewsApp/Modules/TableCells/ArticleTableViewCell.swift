@@ -10,16 +10,17 @@ import UIKit
 import SDWebImage
 
 class ArticleTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var articleImageView: UIImageView!
     
     @IBOutlet weak var labelDate: UILabel!
     @IBOutlet weak var labelSource: UILabel!
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelDesc: UILabel!
-    
-    
-    func setDetails(article:Articles){
+    @IBOutlet weak var btnFav: UIButton!
+    var isFav = false
+    var action: (()->Void)?
+    func setDetails(article:Articles,action:@escaping(()->Void)){
         if let urlStr = article.urlToImage{
             articleImageView.sd_setImage(with: URL(string: urlStr), completed: nil)
         }
@@ -39,7 +40,7 @@ class ArticleTableViewCell: UITableViewCell {
         } else {
             labelSource.isHidden = true
         }
-
+        
         if let value = article.title {
             labelTitle.text = value
         } else {
@@ -51,7 +52,23 @@ class ArticleTableViewCell: UITableViewCell {
         } else {
             labelDesc.isHidden = true
         }
-      
+        btnFav.setImage(UIImage(named: "heart"), for: .normal)
+        for item in AppTargetConstant.Favourites {
+            if item.title == article.title {
+                btnFav.setImage(UIImage(named: "heart-2"), for: .normal)
+                isFav = true
+            }
+        }
+        self.action = action
+        
+    }
+    @IBAction func favAction(_ sender: Any) {
+        action?()
+        if isFav {
+            btnFav.setImage(UIImage(named: "heart"), for: .normal)
+        } else {
+            btnFav.setImage(UIImage(named: "heart-2"), for: .normal)
+        }
     }
     
 }

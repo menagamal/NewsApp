@@ -22,6 +22,8 @@ protocol ArticlesPresenterProtocol: class {
     var view: ArticlesViewProtocol?  { get set }
     func searchArticles(str:String)
     func loadDetails()
+    func loadFavourites()
+    func goToFavourites()
     
 }
 
@@ -38,6 +40,7 @@ protocol ArticlesInteractorInputProtocol: class {
   var presenter: ArticlesInteractorOutputProtocol?  { get set }
     
     func loadArticles()
+    func loadFavourites()
     func searchArticles(str: String)
     func getArticles() -> [Articles]
     func getSearched() -> [Articles]
@@ -48,5 +51,6 @@ protocol ArticlesInteractorInputProtocol: class {
 //MARK: Router -
 protocol ArticlesRouterProtocol: class {
     var view: UIViewController! { get set }
+    func goToFavourites()
     
 }

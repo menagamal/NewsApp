@@ -34,6 +34,13 @@ class ArticlesPresenter: BasePresenter,ArticlesPresenterProtocol {
         self.interactor?.searchArticles(str: str)
         
     }
+    func loadFavourites() {
+        self.interactor?.loadFavourites()
+    }
+    func goToFavourites() {
+        self.router.goToFavourites()
+    }
+    
     
 }
 
@@ -66,5 +73,8 @@ extension ArticlesPresenter: MyStoresCellDataSourceDelegate{
             return
         }
         view.openSafari(url: sourceUrl)
+    }
+    func didToggleFav(article: Articles) {
+        self.interactor?.toggleFavourite(article: article)
     }
 }

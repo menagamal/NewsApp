@@ -40,7 +40,11 @@ class ArticlesTableViewDataSource:  NSObject, UITableViewDataSource,UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell", for: indexPath) as? ArticleTableViewCell
         cell?.selectionStyle = .none
-        cell?.setDetails(article: articles[indexPath.row])
+        cell?.setDetails(article: articles[indexPath.row], action: { [weak self] in
+            guard let self = self else {return}
+            self.delegate.didToggleFav(article: self.articles[indexPath.row])
+          
+        })
         return cell  ?? UITableViewCell()
     }
     
@@ -53,6 +57,7 @@ class ArticlesTableViewDataSource:  NSObject, UITableViewDataSource,UITableViewD
 
 protocol MyStoresCellDataSourceDelegate: class {
     func didSelected(url:String)
+    func didToggleFav(article:Articles)
   
 }
 

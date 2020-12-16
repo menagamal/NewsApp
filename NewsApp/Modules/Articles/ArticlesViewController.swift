@@ -16,6 +16,10 @@ class ArticlesViewController: BaseViewController ,ArticlesViewProtocol{
     
     @IBOutlet weak var articlesTableView: UITableView!
     
+    @IBOutlet weak var btnFav: UIBarButtonItem!
+    
+    var isFav = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,7 +36,12 @@ class ArticlesViewController: BaseViewController ,ArticlesViewProtocol{
         
         searchBar.delegate = self
         ArticlesConfig().createModule(view: self)
-        presenter?.loadDetails()
+        if isFav {
+            presenter?.loadFavourites()
+            self.navigationItem.rightBarButtonItem = nil
+        } else {
+            presenter?.loadDetails()
+        }
     }
     
     
@@ -40,6 +49,9 @@ class ArticlesViewController: BaseViewController ,ArticlesViewProtocol{
         UIApplication.shared.open(url)
     }
     
+    @IBAction func goToFav(_ sender: UIBarButtonItem) {
+        self.presenter?.goToFavourites()
+    }
     
 }
 
